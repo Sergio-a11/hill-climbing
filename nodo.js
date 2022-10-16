@@ -8,7 +8,7 @@ class Nodo
     }
 }
 
-arbol = new Nodo("A",7, new Array(
+arbolin = new Nodo("A",7, new Array(
     [new Nodo("B",6,new Array(
         [new Nodo("D", 3, null)])), 
     new Nodo("C",4,null)]));
