@@ -27,10 +27,11 @@ arbolin = new Nodo("A",7, new Array(
         arbol.forEach(i => {
             if (i.nombre == inicio) {
                 recorrido.push(i.nombre);
-                valor = destino;
-                i.hijos.forEach(K => {
-                    if (arbol.hijos != null && arbol.destino <= valor) {
-                        valor = arbol.valorDestino;
+                i.hijo.forEach(K => {
+                    valor = i.hijo.valorDestino;
+                    if (i.hijo != recorrido.find(({nombre})=>nombre == "i.nombre").nombre
+                    && i.hijo.valorDestino < valor) {
+                        valor = i.hijo.valorDestino;
                         recorrido.push(i.nombre);
                     }
                 });
