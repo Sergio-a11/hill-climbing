@@ -27,7 +27,7 @@ function busqueda(inicio, destino, arbol) {
         if (i.nombre == inicio) {
             recorrido.push(i.nombre);
 
-            i.hijo.forEach(K => {
+            i.hijo.forEach(k=> {
 
                 recorrido.forEach(r => {
                     if (r != k.nombre) {
@@ -35,8 +35,9 @@ function busqueda(inicio, destino, arbol) {
                     }
                 });
                 valor = Math.min(PesoRecorrido);
-                recorrido.push(i.hijo.find(({ nombre }) => valorDestino == valor).nombre);
-                
+                recorrido.push(i.hijo.find(({ valorDestino }) => valorDestino == valor).nombre);
+                PesoRecorrido = [];
+                valor=0;
             });
         } else {
             if (i.nombre == destino) {
