@@ -74,6 +74,8 @@ function busqueda(inicio, destino, arbol) {
            if(ll.nombre != destino && ll.hijo != destino){
             ll.nombre= f;
             recorrido.push(f);
+           }else{
+            recorrido.push(i.nombre);
            }
     return recorrido;
 }
