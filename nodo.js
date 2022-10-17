@@ -86,7 +86,6 @@ function busqueda(inicio, destino, arbol) {
                             }
                         })
                     }
-    
                 }else{
                     valor = PesoRecorrido[0];
                 }
