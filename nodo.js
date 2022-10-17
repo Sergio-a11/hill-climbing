@@ -64,35 +64,37 @@ function busqueda(inicio, destino, arbol) {
         //ver el ultimo valor del recorrido
         //hace un find en el arbol y mira los hijos de ese y decide cual sigue por el menor
         else {
-            k.hijo.forEach(a => {
-                console.log("a", a);
-                recorrido.forEach(ap => {
-                    if (ap != k.nombre) {
-                        PesoRecorrido.push(k.valorDestino);
-                    }
-                });
-            });
-            if(PesoRecorrido.length > 1)
-            {
-                if(!PesoRecorrido[0]==0)
-                {
-
-                    valor = PesoRecorrido[0];
-                    PesoRecorrido.forEach(j => {
-                        if(j<valor)
-                        {
-                            valor = j;
+            if(i.valorDestino != 0){
+                i.hijo.forEach(a => {
+                    console.log("a", a);
+                    recorrido.forEach(ap => {
+                        if (ap != a.nombre) {
+                            PesoRecorrido.push(a.valorDestino);
                         }
-                    })
+                    });
+                });
+                if(PesoRecorrido.length > 1)
+                {
+                    if(!PesoRecorrido[0]==0)
+                    {
+    
+                        valor = PesoRecorrido[0];
+                        PesoRecorrido.forEach(j => {
+                            if(j<valor)
+                            {
+                                valor = j;
+                            }
+                        })
+                    }
+    
+                }else{
+                    valor = PesoRecorrido[0];
                 }
-
-            }else{
-                valor = PesoRecorrido[0];
+                recorrido.push(i.hijo.find(({ valorDestino }) => valorDestino == valor).nombre);
+                PesoRecorrido = [];
+                valor = 0;
+                console.log("reco22",recorrido);
             }
-            recorrido.push(i.hijo.find(({ valorDestino }) => valorDestino == valor).nombre);
-            PesoRecorrido = [];
-            valor = 0;
-            console.log("reco22",recorrido);
         }
 
     });
@@ -102,8 +104,6 @@ function busqueda(inicio, destino, arbol) {
            if(ll.nombre != destino && ll.hijo != destino){
             ll.nombre= f;
             recorrido.push(f);
-           }else{
-            recorrido.push(i.nombre);
            }
     return recorrido;
 }
