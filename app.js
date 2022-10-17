@@ -188,7 +188,7 @@ function conectarNodos()
 
 function crearDistancias()
 {
-    document.getElementById("btnArbol").disabled = false;
+    //document.getElementById("btnArbol").disabled = false;
     for(i=1; i<=fila; i++)
     {
         for(j=1; j<=columna; j++)
@@ -217,6 +217,7 @@ function crearDistancias()
             }
         }
     }
+    console.log(busqueda(nodoInicio.value, nodoObjetivo.value, nodos));
 }
 
 /*
