@@ -26,7 +26,7 @@ function busqueda(inicio, destino, arbol)
     /*arbol.forEach(i => {
         if(i.nombre == inicio)
         {
-
+            
         }
     });*/
 }

@@ -7,7 +7,6 @@ let nodoObjetivo;
 let nodoInicio;
 var primero;
 var segundo;
-var posUno;
 
 function generarMatriz()
 {
@@ -168,7 +167,6 @@ function conectarNodos()
                             
                             //posUno es el input tsxt del primer nodo del enlace
                             //nodo sellecionado es el segundo
-                            console.log("🚀 ~ file: app.js ~ line 167 ~ posUno", posUno.id)
                             console.log("🚀 ~ file: app.js ~ line 167 ~ nodoSeleccionado", nodoSeleccionado.id)
                            
                         } 
@@ -180,7 +178,6 @@ function conectarNodos()
                 }
                 else{
                     primero = i;
-                    posUno = nodoSeleccionado;
                     console.log("🚀 ~ file: app.js ~ line 142 ~ primero", primero)
                     
                 }
@@ -191,9 +188,68 @@ function conectarNodos()
 
 function crearDistancias()
 {
-    
+    document.getElementById("btnArbol").disabled = false;
+    for(i=1; i<=fila; i++)
+    {
+        for(j=1; j<=columna; j++)
+        {
+            if(matriz[i-1][j-1] != '')
+            {
+                var nodo = document.getElementById(i+""+j)
+                if(nodo.id != nodoObjetivo.id)
+                {
+                    var uno = nodo.id.split("");
+                    console.log("uno", uno)
+                    var auxDestino = nodoObjetivo.id.split("");
+                    console.log("auxDestino", auxDestino)
+                    var distanciaColumnas;
+                    var distanciaFilas;
+                    distanciaColumnas = Math.abs(uno[1]-auxDestino[1]);
+                    distanciaFilas = Math.abs(uno[0]-auxDestino[0]);
+                    console.log("distanciaColumnas", distanciaColumnas);
+                    console.log("distanciaFilas", distanciaFilas);
+                    hipotenusa =  Math.round((Math.sqrt(distanciaColumnas+distanciaFilas))*100)/100;
+                    console.log("hipotenusa", Math.round((Math.sqrt(distanciaColumnas+distanciaFilas))*100)/100);
+                    nodos.find(({nombre})=>nombre == nodo.value).valorDestino = hipotenusa;
+
+                }
+                
+            }
+        }
+    }
 }
 
+/*
+function crearArbol()
+{
+    var arbolParaBusqueda = new Set();
+    nodos.forEach(i => {
+        if(i.nombre == nodoInicio.value)
+        {
+            console.log("i",i);
+            i.hijo.forEach(j => {
+                console.log("j",j);
+                j.hijo.forEach(k => {
+                    console.log("k",k);
+                    if(k.nombre == i.nombre)
+                    {
+                        console.log("here");
+                        //j.hijo.
+                    }
+                    arbolParaBusqueda.add(i);
+                })
+                
+            });
+        }
+        else
+        {
+            arbolParaBusqueda.add(i);
+        }
+    });
+    console.log(arbolParaBusqueda);
+    busqueda(nodoInicio.value, nodoObjetivo.value, arbolParaBusqueda);
+}
+*/
 //nodoB = new Array([{"nombre":document.getElementById(27).value, "peso":3,},{"nombre":document.getElementById(74).value, "peso":5}])
 //console.log("🚀 ~ file: app.js ~ line 106 ~ nodoB", nodoB[0][0]["nombre"]);
 
