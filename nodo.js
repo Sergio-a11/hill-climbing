@@ -64,7 +64,35 @@ function busqueda(inicio, destino, arbol) {
         //ver el ultimo valor del recorrido
         //hace un find en el arbol y mira los hijos de ese y decide cual sigue por el menor
         else {
-            
+            k.hijo.forEach(a => {
+                console.log("a", a);
+                recorrido.forEach(ap => {
+                    if (ap != k.nombre) {
+                        PesoRecorrido.push(k.valorDestino);
+                    }
+                });
+            });
+            if(PesoRecorrido.length > 1)
+            {
+                if(!PesoRecorrido[0]==0)
+                {
+
+                    valor = PesoRecorrido[0];
+                    PesoRecorrido.forEach(j => {
+                        if(j<valor)
+                        {
+                            valor = j;
+                        }
+                    })
+                }
+
+            }else{
+                valor = PesoRecorrido[0];
+            }
+            recorrido.push(i.hijo.find(({ valorDestino }) => valorDestino == valor).nombre);
+            PesoRecorrido = [];
+            valor = 0;
+            console.log("reco22",recorrido);
         }
 
     });
