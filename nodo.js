@@ -64,15 +64,20 @@ function busqueda(inicio, destino, arbol) {
         //ver el ultimo valor del recorrido
         //hace un find en el arbol y mira los hijos de ese y decide cual sigue por el menor
         else {
-            if (i.hijo != destino) {
-                recorrido.push(i.nombre);
-                
-            }else{
-                recorrido.push(i.hijo.nombre);
-            }
+            
         }
 
     });
+    console.log("rra",recorrido.length);
+            var ll=recorrido.length;
+            var f = "x";
+           if(ll.nombre != destino && ll.hijo != destino){
+            ll.nombre= f;
+            recorrido.push(f);
+           }else{
+            recorrido.push(i.nombre);
+           }
+           console.log("rr",recorrido);
     return recorrido;
 }
 
@@ -108,4 +113,49 @@ function busqueda(inicio, destino, arbol) {
                 PesoRecorrido = [];
                 valor = 0;
                 console.log("reco",recorrido);
+ */
+/**
+ *  if (recorrido.nombre != destino) {
+                //recorrido.push(i.nombre);
+                console.log("recorrido", recorrido.nombre, destino);
+                i.hijo.forEach(k => {
+                    console.log("k",k);
+                    recorrido.forEach(r => {
+                        if (r != k.nombre) {
+                            PesoRecorrido.push(k.valorDestino);
+                        }
+                    });                
+                });
+                if(PesoRecorrido.length > 1)
+                {
+                    if(!PesoRecorrido[0]==0)
+                    {
+    
+                        valor = PesoRecorrido[0];
+                        PesoRecorrido.forEach(j => {
+                            if(j<valor)
+                            {
+                                valor = j;
+                            }
+                        })
+                    }
+    
+                }else{
+                    valor = PesoRecorrido[0];
+                }
+
+                
+            }else{
+                recorrido.push(i.nombre);
+            }
+            console.log("reco2",recorrido);
+            ll.hijo.forEach( h2 => {
+                console.log("h2",h2);
+                recorrido.forEach(r => {
+                    if (r != H2.nombre) {
+                        PesoRecorrido.push(k.valorDestino);
+                    }
+                });
+            }
+            );
  */
