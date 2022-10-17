@@ -7,6 +7,7 @@ let nodoObjetivo;
 let nodoInicio;
 var primero;
 var segundo;
+var posUno;
 
 function generarMatriz()
 {
@@ -31,6 +32,7 @@ function generarMatriz()
     }
     string +=`</table>`;
     matriz.innerHTML = string;
+    document.getElementById("btnGrafo").disabled = false;
 }
 
 function arbol()
@@ -48,6 +50,9 @@ function arbol()
     }
     console.log("🚀 ~ file: app.js ~ line 44 ~ matriz", matriz)
     obtenerNodos();
+    document.getElementById("btnInicio").disabled = false;
+    document.getElementById("btnDestino").disabled = false;
+    document.getElementById("btnConexion").disabled = false;
 }
 
 
@@ -79,7 +84,7 @@ function objetivo()
         nodoObjetivo = nodoSeleccionado;
         console.log("🚀 ~ file: app.js ~ line 56 ~ destinoVar", nodoSeleccionado)
     }
-    
+    document.getElementById("btnDistancia").disabled = false;
 }
 
 function inicio()
@@ -160,22 +165,33 @@ function conectarNodos()
                             }else{
                                 i.hijo.push(j);
                             }
+                            
+                            //posUno es el input tsxt del primer nodo del enlace
+                            //nodo sellecionado es el segundo
+                            console.log("🚀 ~ file: app.js ~ line 167 ~ posUno", posUno.id)
+                            console.log("🚀 ~ file: app.js ~ line 167 ~ nodoSeleccionado", nodoSeleccionado.id)
+                           
                         } 
                     })
                     
-                    console.log("🚀 ~ file: app.js ~ line 139 ~ segundo", segundo)
                     primero = null;
                     segundo = null;
                     document.getElementById("conexiones").innerHTML = "";
                 }
                 else{
                     primero = i;
+                    posUno = nodoSeleccionado;
                     console.log("🚀 ~ file: app.js ~ line 142 ~ primero", primero)
                     
                 }
             }
         });
     }
+}
+
+function crearDistancias()
+{
+    
 }
 
 //nodoB = new Array([{"nombre":document.getElementById(27).value, "peso":3,},{"nombre":document.getElementById(74).value, "peso":5}])
