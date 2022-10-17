@@ -63,7 +63,7 @@ function busqueda(inicio, destino, arbol) {
         } //los hijos del ultimo del recorrido
         //ver el ultimo valor del recorrido
         //hace un find en el arbol y mira los hijos de ese y decide cual sigue por el menor
-        else {
+        else {//bucar nodos
             if (i.hijo != destino) {
                 //recorrido.push(i.nombre);
                 i.hijo.forEach(k => {
