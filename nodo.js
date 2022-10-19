@@ -104,6 +104,7 @@ function busqueda(inicio, destino, arbol) {
             ll.nombre= f;
             recorrido.push(f);
            }
+           alert("Recorrido, " + recorrido);
     return recorrido;
 }
 
