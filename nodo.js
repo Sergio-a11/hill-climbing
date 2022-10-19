@@ -90,7 +90,7 @@ function busqueda(inicio, destino, arbol) {
                     console.log("a.noimbre", a.nombre)
                     console.log(ap==a.nombre);
                     //revisar por entra a uno que ya visstto y es ultimo y pone el valor del que ya visito
-                    if (ap != a.nombre) {
+                    if (ap.nombre != a.nombre) {
                         console.log("entro");
                         PesoRecorrido.push(a.valorDestino);
                     }
@@ -113,7 +113,7 @@ function busqueda(inicio, destino, arbol) {
             }
             console.log("valor previo busqueda", valor)
             console.log("hijos previo a buiscar", i.hijo);
-            recorrido.push(i.hijo.find(({ valorDestino }) => valorDestino == valor).nombre);
+            recorrido.push(nodoDos.hijo.find(({ valorDestino }) => valorDestino == valor).nombre);
             if(valor == 0)
             {
                 alert("Recorrido, " + recorrido);
