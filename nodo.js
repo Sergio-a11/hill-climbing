@@ -81,9 +81,31 @@ function busqueda(inicio, destino, arbol) {
         
         //si el siguiente nod no es el objetivo
         arbol.forEach(i => {
-            var nodoDos = arbol.find(({ nombre }) => nombre == recorrido[recorrido.length-1])
-            console.log("tertcer paso", nodoDos)
+            var nodoDos = arbol.find(({ nombre }) => nombre == recorrido[recorrido.length-1]);
+            console.log("tertcer paso", nodoDos);
             nodoDos.hijo.forEach(a => {
+                console.log("a", a);
+                
+            });
+            
+        });
+    }
+
+    console.log("rra",recorrido.length);
+            var ll=recorrido.length;
+            var f = "x";
+           if(ll.nombre != destino && ll.hijo != destino){
+            ll.nombre= f;
+            recorrido.push(f);
+           }
+           alert("Recorrido, " + recorrido);
+    return recorrido;
+}
+
+
+//restauración
+/**
+ * nodoDos.hijo.forEach(a => {
                 console.log("a", a);
                 recorrido.forEach(ap => {
                     console.log("ap", ap);
@@ -122,19 +144,13 @@ function busqueda(inicio, destino, arbol) {
             PesoRecorrido = [];
             valor = 0;
             console.log("reco22",recorrido);
-        });
-    }
+ */
 
-    console.log("rra",recorrido.length);
-            var ll=recorrido.length;
-            var f = "x";
-           if(ll.nombre != destino && ll.hijo != destino){
-            ll.nombre= f;
-            recorrido.push(f);
-           }
-           alert("Recorrido, " + recorrido);
-    return recorrido;
-}
+
+
+
+
+
 
 /**
  * i.hijo.forEach(k => {
