@@ -80,17 +80,23 @@ function busqueda(inicio, destino, arbol) {
         //tercer paso
         
         //si el siguiente nod no es el objetivo
-        arbol.forEach(i => {
+        arbol.forEach(j => {
             var nodoDos = arbol.find(({ nombre }) => nombre == recorrido[recorrido.length-1]);
             console.log("tertcer paso", nodoDos);
             nodoDos.hijo.forEach(a => {
                 console.log("a", a);
-                
+                recorrido.forEach(ap => {
+                    console.log("ap", ap);
+                    console.log("mirar", ap==a.nombre);
+                    if (ap != a.nombre) {
+                        console.log("entro");
+                        //PesoRecorrido.push(ap.valorDestino);
+                    }
+                });
             });
-
-            
+           
+        aux+=2; 
         });
-        aux+=2;
     }
 
     console.log("rra",recorrido.length);
