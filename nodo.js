@@ -90,9 +90,9 @@ function busqueda(inicio, destino, arbol) {
                     console.log("a.noimbre", a.nombre)
                     console.log(ap==a.nombre);
                     //revisar por entra a uno que ya visstto y es ultimo y pone el valor del que ya visito
-                    if (ap.nombre != a.nombre) {
+                    if (ap != a.nombre) {
                         console.log("entro");
-                        PesoRecorrido.push(a.valorDestino);
+                        PesoRecorrido.push(ap.valorDestino);
                     }
                 });
             });
