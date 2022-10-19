@@ -25,7 +25,7 @@ function generarMatriz()
         for(j=1; j<=columna; j++)
         {
             //console.log("🚀 ~ file: app.js ~ line 23 ~ j", j)
-            string += `<td><input type="text" class="matriz" onfocus="seleccion(`+i+j+`)" id="`+i+j+`"/></td>`;
+            string += `<td><input type="text" class="matriz" onfocus="seleccion('`+i+"$"+j+`')" id="`+i+"$"+j+`"/></td>`;
         }
         string += `</tr>`;
     }
@@ -44,7 +44,7 @@ function arbol()
     {
         for(j=1; j<=columna; j++)
         {
-            matriz[i-1][j-1] = document.getElementById(i+""+j).value;
+            matriz[i-1][j-1] = document.getElementById(i+"$"+j).value;
         }
     }
     console.log("🚀 ~ file: app.js ~ line 44 ~ matriz", matriz)
@@ -151,6 +151,7 @@ function conectarNodos()
                             //se debe hacer un condicional para parar y no devolverse
                             //por el padre y luego hijo infinito
                             console.log("🚀 ~ file: app.js ~ line 149 ~ primero", primero)
+                            console.log("🚀 ~ file: app.js ~ line 149 ~ i-nodo seleccionado", i.hijo)
                             if(primero.hijo == null)
                             {
                                 j.hijo = new Array(i);
@@ -178,7 +179,7 @@ function conectarNodos()
                 }
                 else{
                     primero = i;
-                    console.log("🚀 ~ file: app.js ~ line 142 ~ primero", primero)
+                    console.log("🚀 ~ file: app.js ~ line 142 ~ primerooo", primero)
                     
                 }
             }
@@ -195,12 +196,12 @@ function crearDistancias()
         {
             if(matriz[i-1][j-1] != '')
             {
-                var nodo = document.getElementById(i+""+j)
+                var nodo = document.getElementById(i+"$"+j)
                 if(nodo.id != nodoObjetivo.id)
                 {
-                    var uno = nodo.id.split("");
+                    var uno = nodo.id.split("$");
                     console.log("uno", uno)
-                    var auxDestino = nodoObjetivo.id.split("");
+                    var auxDestino = nodoObjetivo.id.split("$");
                     console.log("auxDestino", auxDestino)
                     var distanciaColumnas;
                     var distanciaFilas;

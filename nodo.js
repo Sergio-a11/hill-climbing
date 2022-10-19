@@ -25,6 +25,9 @@ function busqueda(inicio, destino, arbol) {
     let recorrido = new Array();
     let PesoRecorrido = new Array();
     let valor = 0;
+
+
+
     arbol.forEach(i => {
         if (i.nombre == inicio) {
             recorrido.push(i.nombre);
@@ -57,46 +60,71 @@ function busqueda(inicio, destino, arbol) {
             console.log("valor",valor);
             console.log("PesoRecorrido",PesoRecorrido);
             recorrido.push(i.hijo.find(({ valorDestino }) => valorDestino == valor).nombre);
+            if(valor == 0)
+            {
+                alert("Recorrido, " + recorrido);
+                return recorrido;
+            }
             PesoRecorrido = [];
             valor = 0;
             console.log("reco",recorrido);
-        } //los hijos del ultimo del recorrido
+        }
+    });
+
+    var aux = 0;
+    while(aux < arbol.length)
+    {
+         //los hijos del ultimo del recorrido
         //ver el ultimo valor del recorrido
         //hace un find en el arbol y mira los hijos de ese y decide cual sigue por el menor
-        else {
-            if(i.valorDestino != 0){
-                i.hijo.forEach(a => {
-                    console.log("a", a);
-                    recorrido.forEach(ap => {
-                        if (ap != a.nombre) {
-                            PesoRecorrido.push(a.valorDestino);
-                        }
-                    });
-                });
-                if(PesoRecorrido.length > 1)
-                {
-                    if(!PesoRecorrido[0]==0)
-                    {
-    
-                        valor = PesoRecorrido[0];
-                        PesoRecorrido.forEach(j => {
-                            if(j<valor)
-                            {
-                                valor = j;
-                            }
-                        })
+        //tercer paso
+        
+        //si el siguiente nod no es el objetivo
+        arbol.forEach(i => {
+            var nodoDos = arbol.find(({ nombre }) => nombre == recorrido[recorrido.length-1])
+            console.log("tertcer paso", nodoDos)
+            nodoDos.hijo.forEach(a => {
+                console.log("a", a);
+                recorrido.forEach(ap => {
+                    console.log("ap", ap);
+                    console.log("a.noimbre", a.nombre)
+                    console.log(ap==a.nombre);
+                    //revisar por entra a uno que ya visstto y es ultimo y pone el valor del que ya visito
+                    if (ap != a.nombre) {
+                        console.log("entro");
+                        PesoRecorrido.push(a.valorDestino);
                     }
-                }else{
+                });
+            });
+            if(PesoRecorrido.length > 1)
+            {
+                if(!PesoRecorrido[0]==0)
+                {
                     valor = PesoRecorrido[0];
+                    PesoRecorrido.forEach(j => {
+                        if(j<valor)
+                        {
+                            valor = j;
+                        }
+                    })
                 }
-                recorrido.push(i.hijo.find(({ valorDestino }) => valorDestino == valor).nombre);
-                PesoRecorrido = [];
-                valor = 0;
-                console.log("reco22",recorrido);
+            }else{
+                valor = PesoRecorrido[0];
             }
-        }
+            console.log("valor previo busqueda", valor)
+            console.log("hijos previo a buiscar", i.hijo);
+            recorrido.push(i.hijo.find(({ valorDestino }) => valorDestino == valor).nombre);
+            if(valor == 0)
+            {
+                alert("Recorrido, " + recorrido);
+                return recorrido;
+            }
+            PesoRecorrido = [];
+            valor = 0;
+            console.log("reco22",recorrido);
+        });
+    }
 
-    });
     console.log("rra",recorrido.length);
             var ll=recorrido.length;
             var f = "x";
