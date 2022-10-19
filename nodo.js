@@ -94,7 +94,7 @@ function busqueda(inicio, destino, arbol) {
                 }else{
                     valor = PesoRecorrido[0];
                 }
-                recorrido.push(nodow.hijo.find(({ valorDestino }) => valorDestino == valor).nombre);
+                recorrido.push(i.hijo.find(({ valorDestino }) => valorDestino == valor).nombre);
                 if(valor == 0){
                     return recorrido;
                 }
