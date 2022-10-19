@@ -65,8 +65,9 @@ function busqueda(inicio, destino, arbol) {
         //hace un find en el arbol y mira los hijos de ese y decide cual sigue por el menor
         else {
             var nodow= arbol.find(({ nombre }) => nombre == recorrido[recorrido.length-1]);
-            if(i.valorDestino != 0){
-                i.hijo.forEach(a => {
+
+            if(i.valorDestino != 0 && i.nombre != nodow.nombre){
+                nodow.hijo.forEach(a => {
                     console.log("a", a);
                     recorrido.forEach(ap => {
                         if (ap != a.nombre) {
@@ -90,7 +91,7 @@ function busqueda(inicio, destino, arbol) {
                 }else{
                     valor = PesoRecorrido[0];
                 }
-                recorrido.push(i.hijo.find(({ valorDestino }) => valorDestino == valor).nombre);
+                recorrido.push(nodow.hijo.find(({ valorDestino }) => valorDestino == valor).nombre);
                 PesoRecorrido = [];
                 valor = 0;
                 console.log("reco22",recorrido);
@@ -98,13 +99,7 @@ function busqueda(inicio, destino, arbol) {
         }
 
 });
-    console.log("rra",recorrido);
-            var ll=recorrido.length;
-            var f = "X";
-           if(ll.nombre != destino && ll.hijo != destino){
-            ll.nombre= f;
-            recorrido.push(f);
-           }
+    
            alert("Recorrido, " + recorrido);
     return recorrido;
 }
