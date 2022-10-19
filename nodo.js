@@ -113,12 +113,9 @@ function busqueda(inicio, destino, arbol) {
             }
             console.log("valor previo busqueda", valor)
             console.log("hijos previo a buiscar", i.hijo);
-            if(nodoDos.valorDestino != 0){
-                recorrido.push(nodoDos.hijo.find(({ valorDestino }) => valorDestino == valor).nombre);
-            }
+            recorrido.push(nodoDos.hijo.find(({ valorDestino }) => valorDestino == valor).nombre);
             if(valor == 0)
             {
-                recorrido.push(nodoDos.hijo.find(({ valorDestino }) => valorDestino == valor).nombre);
                 alert("Recorrido, " + recorrido);
                 return recorrido;
             }
