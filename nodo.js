@@ -87,8 +87,10 @@ function busqueda(inicio, destino, arbol) {
                 console.log("a", a);
                 
             });
+
             
         });
+        aux-=2;
     }
 
     console.log("rra",recorrido.length);
