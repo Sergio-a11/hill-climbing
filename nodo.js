@@ -57,6 +57,9 @@ function busqueda(inicio, destino, arbol) {
             console.log("valor",valor);
             console.log("PesoRecorrido",PesoRecorrido);
             recorrido.push(i.hijo.find(({ valorDestino }) => valorDestino == valor).nombre);
+            if(valor == 0){
+                return recorrido;
+            }
             PesoRecorrido = [];
             valor = 0;
             console.log("reco",recorrido);
@@ -92,6 +95,9 @@ function busqueda(inicio, destino, arbol) {
                     valor = PesoRecorrido[0];
                 }
                 recorrido.push(nodow.hijo.find(({ valorDestino }) => valorDestino == valor).nombre);
+                if(valor == 0){
+                    return recorrido;
+                }
                 PesoRecorrido = [];
                 valor = 0;
                 console.log("reco22",recorrido);
