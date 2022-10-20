@@ -115,16 +115,24 @@ function busqueda(inicio, destino, arbol) {
             }
             console.log("valor previo busqueda", valor)
             console.log("hijos previo a buiscar", ji.hijo);
-
+            console.log("hijos previo",nodoDos.hijo.find(({ valorDestino }) => valorDestino == valor).nombre);
             recorrido.push(nodoDos.hijo.find(({ valorDestino }) => valorDestino == valor).nombre);
+            /*if(valor == valorDestino){
+                valor = 0;
+                recorrido.push(nodoDos.hijo.find(({ valorDestino }) => valorDestino == valor).nombre);
+            }else{
+                recorrido.push(nodoDos.hijo.find(({ valorDestino }) => valorDestino == valor).nombre);
+            }*/
+            //recorrido.push(.hijo.find(({ valorDestino }) => valorDestino == valor).nombre);
             if(valor == 0)
             {
-                alert("Recorrido, " + recorrido);
+                alert("Recorrido, ", recorrido);
+                aux= arbol.length;
                 return recorrido;
             }
-            
             PesoRecorrido = [];
             valor = 0;
+            console.log("reco22",recorrido);
         aux+=2; 
         });
     }
