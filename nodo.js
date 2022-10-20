@@ -117,10 +117,12 @@ function busqueda(inicio, destino, arbol) {
             console.log("hijos previo a buiscar", ji.hijo);
             //console.log("hijos previo",nodoDos.hijo.find(({ valorDestino }) => valorDestino == valor).nombre);
             //recorrido.push(nodoDos.hijo.find(({ valorDestino }) => valorDestino == valor).nombre);
-            if(valor != 0){
-                if(nodoDos.hijo.nombre != destino){
-                    recorrido.push(nodoDos.hijo.find(({ valorDestino }) => valorDestino == valor).nombre); 
-                }
+            if(/*valor != 0 &&*/ nodoDos.hijo.nombre!= destino){
+                //if(nodoDos.hijo.nombre != destino){
+                    var b = nodoDos.hijo.find(({ valorDestino }) => valorDestino == valor).nombre;
+                    console.log("valorate que si entro", b);
+                    recorrido.push(b); 
+                //}
             }else{
                 var d = destino;
                 recorrido.push(d);
