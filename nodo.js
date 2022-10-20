@@ -115,21 +115,24 @@ function busqueda(inicio, destino, arbol) {
             }
             console.log("valor previo busqueda", valor)
             console.log("hijos previo a buiscar", ji.hijo);
-            console.log("hijos previo",nodoDos.hijo.find(({ valorDestino }) => valorDestino == valor).nombre);
-            recorrido.push(nodoDos.hijo.find(({ valorDestino }) => valorDestino == valor).nombre);
-            /*if(valor == valorDestino){
-                valor = 0;
-                recorrido.push(nodoDos.hijo.find(({ valorDestino }) => valorDestino == valor).nombre);
+            //console.log("hijos previo",nodoDos.hijo.find(({ valorDestino }) => valorDestino == valor).nombre);
+            //recorrido.push(nodoDos.hijo.find(({ valorDestino }) => valorDestino == valor).nombre);
+            if(valor != 0){
+                if(nodoDos.hijo.find(({ valorDestino }) => valorDestino == valor).nombre != destino){
+                    recorrido.push(nodoDos.hijo.find(({ valorDestino }) => valorDestino == valor).nombre); 
+                }
             }else{
-                recorrido.push(nodoDos.hijo.find(({ valorDestino }) => valorDestino == valor).nombre);
-            }*/
-            //recorrido.push(.hijo.find(({ valorDestino }) => valorDestino == valor).nombre);
-            if(valor == 0)
-            {
+                var d = destino;
+                recorrido.push(d);
                 alert("Recorrido, ", recorrido);
                 aux= arbol.length;
                 return recorrido;
             }
+            //recorrido.push(.hijo.find(({ valorDestino }) => valorDestino == valor).nombre);
+            /*if(valor == 0)
+            {
+                
+            }*/
             PesoRecorrido = [];
             valor = 0;
             console.log("reco22",recorrido);
