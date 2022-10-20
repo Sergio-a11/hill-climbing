@@ -73,7 +73,9 @@ function busqueda(inicio, destino, arbol) {
     });
 
     var aux = 0;
-    while(aux < arbol.length)
+    var aux2 = arbol.length;
+    var f = true;
+    labelterminar: while(aux < arbol.length)
     {
          //los hijos del ultimo del recorrido
         //ver el ultimo valor del recorrido
@@ -113,23 +115,33 @@ function busqueda(inicio, destino, arbol) {
             }else{
                 valor = PesosRecorrido[0];
             }
-            console.log("valor previo busqueda", valor)
-            console.log("hijos previo a buiscar", ji.hijo);
+            console.log("valor previo busqueda", valor);
+            console.log("hijos previo a buiscar", nodoDos.hijo);
             //console.log("hijos previo",nodoDos.hijo.find(({ valorDestino }) => valorDestino == valor).nombre);
             //recorrido.push(nodoDos.hijo.find(({ valorDestino }) => valorDestino == valor).nombre);
-            if(/*valor != 0 &&*/ nodoDos.hijo.nombre!= destino){
-                //if(nodoDos.hijo.nombre != destino){
-                    var b = nodoDos.hijo.find(({ valorDestino }) => valorDestino == valor).nombre;
-                    console.log("valorate que si entro", b);
-                    recorrido.push(b); 
-                //}
-            }else{
+            if(/*valor != 0 &&*/ nodoDos.hijo.nombre!= destino && f==true){
+                var b = nodoDos.hijo.find(({ valorDestino }) => valorDestino == valor).nombre;
+                console.log("valorate que si entro", b);
+                recorrido.push(b);
+            }
+            
+            if(recorrido[recorrido.length-1] == destino && f==true){
+                console.log("aqui toy");
+                alert("Recorrido, ", recorrido);
+                aux=aux2;
+                f=false;
+            }
+            
+            
+            /*else{
+                
+                
                 var d = destino;
                 recorrido.push(d);
                 alert("Recorrido, ", recorrido);
                 aux= arbol.length;
                 return recorrido;
-            }
+            }*/
             //recorrido.push(.hijo.find(({ valorDestino }) => valorDestino == valor).nombre);
             /*if(valor == 0)
             {
@@ -138,6 +150,7 @@ function busqueda(inicio, destino, arbol) {
             PesoRecorrido = [];
             valor = 0;
             console.log("reco22",recorrido);
+            alert("Recorrido, ", recorrido);
         aux+=2; 
         });
     }
@@ -149,9 +162,11 @@ function busqueda(inicio, destino, arbol) {
             ll.nombre= f;
             recorrido.push(f);
            }
-           alert("Recorrido, " + recorrido);
+           alert("Recorrido, ", recorrido);
     return recorrido;
 }
+
+
 
 
 //restauración
