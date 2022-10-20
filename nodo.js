@@ -118,7 +118,7 @@ function busqueda(inicio, destino, arbol) {
             //console.log("hijos previo",nodoDos.hijo.find(({ valorDestino }) => valorDestino == valor).nombre);
             //recorrido.push(nodoDos.hijo.find(({ valorDestino }) => valorDestino == valor).nombre);
             if(valor != 0){
-                if(nodoDos.hijo.find(({ valorDestino }) => valorDestino == valor).nombre != destino){
+                if(nodoDos.hijo.nombre != destino){
                     recorrido.push(nodoDos.hijo.find(({ valorDestino }) => valorDestino == valor).nombre); 
                 }
             }else{
@@ -141,7 +141,7 @@ function busqueda(inicio, destino, arbol) {
     }
 
     console.log("rra",recorrido.length);
-            var ll=recorrido.length;
+            var ll=recorrido.length-1;
             var f = "x";
            if(ll.nombre != destino && ll.hijo != destino){
             ll.nombre= f;
