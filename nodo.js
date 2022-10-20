@@ -24,6 +24,7 @@ function busqueda(inicio, destino, arbol) {
     //recorrido.push(i.nombre) <- guadra el recorrido en un array
     let recorrido = new Array();
     let PesoRecorrido = new Array();
+    let PesosRecorrido = new Array();
     let valor = 0;
 
 
@@ -80,21 +81,50 @@ function busqueda(inicio, destino, arbol) {
         //tercer paso
         
         //si el siguiente nod no es el objetivo
-        arbol.forEach(j => {
+        arbol.forEach(ji => {
             var nodoDos = arbol.find(({ nombre }) => nombre == recorrido[recorrido.length-1]);
             console.log("tertcer paso", nodoDos);
             nodoDos.hijo.forEach(a => {
                 console.log("a", a);
+                console.log("avd", a.valorDestino);
                 recorrido.forEach(ap => {
                     console.log("ap", ap);
+                    console.log("apvd", ap.valorDestino);
                     console.log("mirar", ap==a.nombre);
                     if (ap != a.nombre) {
                         console.log("entro");
-                        //PesoRecorrido.push(ap.valorDestino);
+                        PesosRecorrido.push(a.valorDestino);
                     }
                 });
             });
-           
+            console.log("PesoRecorrido: ", PesosRecorrido);
+            if(PesosRecorrido.length > 1)
+            {
+                if(!PesosRecorrido[0]==0)
+                {
+                    valor = PesosRecorrido[0];
+                    PesosRecorrido.forEach(j => {
+                        if(j<valor)
+                        {
+                            valor = j;
+                        }
+                    })
+                }
+            }else{
+                valor = PesosRecorrido[0];
+            }
+            console.log("valor previo busqueda", valor)
+            console.log("hijos previo a buiscar", ji.hijo);
+
+            recorrido.push(nodoDos.hijo.find(({ valorDestino }) => valorDestino == valor).nombre);
+            if(valor == 0)
+            {
+                alert("Recorrido, " + recorrido);
+                return recorrido;
+            }
+            
+            PesoRecorrido = [];
+            valor = 0;
         aux+=2; 
         });
     }
@@ -106,6 +136,7 @@ function busqueda(inicio, destino, arbol) {
             ll.nombre= f;
             recorrido.push(f);
            }
+           
            alert("Recorrido, " + recorrido);
     return recorrido;
 }
