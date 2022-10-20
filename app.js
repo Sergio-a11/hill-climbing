@@ -2,6 +2,7 @@ let fila;
 let columna;
 let matriz = new Array();
 let nodos = new Array();
+let semiArbol = new Array();
 let nodoSeleccionado;
 let nodoObjetivo;
 let nodoInicio;
@@ -217,7 +218,7 @@ function crearDistancias()
             }
         }
     }
-    console.log(busqueda(nodoInicio.value, nodoObjetivo.value, nodos));
+    console.log(crearArbol2(nodoInicio.value, nodoObjetivo.value, nodos));
 }
 
 /*

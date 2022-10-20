@@ -103,3 +103,60 @@ function busqueda(inicio, destino, arbol) {
     });
     return recorrido;
 }
+
+let nodosParaVisitar = new Array();
+let nodosVisitado = new Array();
+let ArbolFinal = [];
+
+function crearArbol2(inicio, objetivo, nodos)
+{
+
+    nodosParaVisitar = []; // el nodo
+    nodosVisitado = []; // solo el nombre
+    nodosVisitado.push(nodos.find(({ nombre }) => nombre == inicio).nombre);
+    if(nodosVisitado.length == 1)
+    {
+        ArbolFinal.push(new Nodo(inicio, nodos.find(({ nombre }) => nombre == inicio).valorDestino), null)
+        nodos.find(({ nombre }) => nombre == nodosVisitado[0]).hijo.forEach(i => {
+            console.log("🚀 ~ file: nodo.js ~ line 119 ~ nodos.find ~ i", i)
+            nodosParaVisitar.push(i);
+            if(ArbolFinal[0].hijo == null)
+            {
+                ArbolFinal[0].hijo = new Array(new Nodo(i.nombre, i.valorDestino, null));
+
+            }else{
+                ArbolFinal[0].hijo.push(new Nodo(i.nombre, i.valorDestino, null))
+            }
+        });
+    }
+
+    
+    while(nodosParaVisitar.length > 0 || nodosVisitado[nodosVisitado.length-1] != objetivo)
+    {
+        //primer nodo
+        let nodoActual = nodosParaVisitar.shift();
+        
+        if(nodoActual && !nodosVisitado.includes(nodoActual['nombre']))
+        {
+            console.log("🚀 ~ file: nodo.js ~ line 126 ~ nodoActual", nodoActual)
+            a = nodoActual;
+            console.log("🚀 ~ file: nodo.js ~ line 132 ~ entro", nodoActual['nombre'])
+            
+            nodosVisitado.push(nodoActual['nombre']);
+            nodos.find(({ nombre }) => nombre == nodoActual['nombre']).hijo.forEach(i => {
+                nodosParaVisitar.push(i);
+                console.log("🚀 ~ file: nodo.js ~ line 138 ~ nodos.find ~ i", i)
+                if(ArbolFinal[0].hijo.find(({ nombre }) => nombre == nodoActual['nombre']).hijo == null)
+                {
+                    ArbolFinal[0].hijo.find(({ nombre }) => nombre == nodoActual['nombre']).hijo = new Array(new Nodo(i.nombre, i.valorDestino, null));
+
+                }else{
+                    ArbolFinal[0].hijo.find(({ nombre }) => nombre == nodoActual['nombre']).hijo.push(new Nodo(i.nombre, i.valorDestino, null))
+                }
+            });
+        }
+    }
+    
+
+    console.log(nodosVisitado);
+}
