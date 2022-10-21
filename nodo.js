@@ -133,7 +133,7 @@ function busqueda(inicio, destino, arbol) {
             PesoRecorrido = [];
             valor = 0;
             console.log("reco22",recorrido);
-            document.getElementById("conexiones").innerHTML = recorrido.toString();
+            //document.getElementById("conexiones").innerHTML = recorrido.toString();
         aux+=2; 
         });
     }
@@ -145,7 +145,7 @@ function busqueda(inicio, destino, arbol) {
             ll.nombre= f;
             recorrido.push(f);
            }
-           
+           document.getElementById("conexiones").innerHTML = recorrido.toString();
     return recorrido;
 }
 
