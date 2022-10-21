@@ -73,7 +73,7 @@ function busqueda(inicio, destino, arbol) {
     });
 
     var aux = 0;
-    var aux2 = arbol.length;
+    var aux2 = arbol.length-1;
     var f = true;
     labelterminar: while(aux < arbol.length)
     {
@@ -128,8 +128,20 @@ function busqueda(inicio, destino, arbol) {
                 alert("Recorrido, ", recorrido);
                 aux=aux2;
                 f=false;
+                document.getElementById("conexiones").innerHTML = recorrido.toString();
+                return recorrido;
             }
-  
+            if(recorrido[recorrido.length-1] != destino && f==true || aux>= arbol.length){
+                var ll=recorrido.length-1;
+                var mal = "X";
+               if(ll.nombre != destino && ll.hijo != destino){
+                ll.nombre= mal;
+                recorrido.push(mal);
+                f=false;
+                document.getElementById("conexiones").innerHTML = recorrido.toString();
+                return recorrido;
+               } 
+            }
             PesoRecorrido = [];
             valor = 0;
             console.log("reco22",recorrido);
@@ -137,15 +149,6 @@ function busqueda(inicio, destino, arbol) {
         aux+=2; 
         });
     }
-
-    console.log("rra",recorrido.length);
-            var ll=recorrido.length-1;
-            var f = "x";
-           if(ll.nombre != destino && ll.hijo != destino){
-            ll.nombre= f;
-            recorrido.push(f);
-           }
-           document.getElementById("conexiones").innerHTML = recorrido.toString();
     return recorrido;
 }
 
