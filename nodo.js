@@ -139,24 +139,45 @@ function crearArbol2(inicio, objetivo, nodos)
         if(nodoActual && !nodosVisitado.includes(nodoActual['nombre']))
         {
             console.log("🚀 ~ file: nodo.js ~ line 126 ~ nodoActual", nodoActual)
-            a = nodoActual;
             console.log("🚀 ~ file: nodo.js ~ line 132 ~ entro", nodoActual['nombre'])
             
             nodosVisitado.push(nodoActual['nombre']);
             nodos.find(({ nombre }) => nombre == nodoActual['nombre']).hijo.forEach(i => {
                 nodosParaVisitar.push(i);
                 console.log("🚀 ~ file: nodo.js ~ line 138 ~ nodos.find ~ i", i)
-                if(ArbolFinal[0].hijo.find(({ nombre }) => nombre == nodoActual['nombre']).hijo == null)
-                {
-                    ArbolFinal[0].hijo.find(({ nombre }) => nombre == nodoActual['nombre']).hijo = new Array(new Nodo(i.nombre, i.valorDestino, null));
+                
+                ahondar(ArbolFinal[0].hijo[0], nodoActual['nombre'], i)
 
-                }else{
-                    ArbolFinal[0].hijo.find(({ nombre }) => nombre == nodoActual['nombre']).hijo.push(new Nodo(i.nombre, i.valorDestino, null))
-                }
             });
         }
     }
     
 
     console.log(nodosVisitado);
+}
+
+function ahondar(nodo, actual, j)
+{
+    if(nodo["nombre"].includes(actual))
+    {
+        console.log(nodo.hijo)
+        if(nodo.hijo == null)
+        {
+            nodo.hijo = new Array(new Nodo(j.nombre, j.valorDestino, null));
+        }
+        else{
+            nodo.hijo.push(new Nodo(j.nombre, j.valorDestino, null));
+        }
+        return;
+    }
+    else
+    {
+        console.log(nodo.hijo)
+        if(nodo.hijo == null)
+        {
+            ahondar(nodo, nodo.nombre, nodos.find(({ nombre }) => nombre == nodo.nombre))
+            return;
+        }
+    }
+
 }
