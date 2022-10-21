@@ -117,7 +117,7 @@ function busqueda(inicio, destino, arbol) {
             }
             console.log("valor previo busqueda", valor);
             console.log("hijos previo a buiscar", nodoDos.hijo);
-            if(/*valor != 0 &&*/ nodoDos.hijo.nombre!= destino && f==true){
+            if(nodoDos.hijo.nombre!= destino && f==true){
                 var b = nodoDos.hijo.find(({ valorDestino }) => valorDestino == valor).nombre;
                 console.log("valorate que si entro", b);
                 recorrido.push(b);
