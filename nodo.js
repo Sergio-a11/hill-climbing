@@ -107,30 +107,35 @@ function busqueda(inicio, destino, arbol) {
 let nodosParaVisitar = new Array();
 let nodosVisitado = new Array();
 let ArbolFinal = [];
+let stringArbol = ""
 
 function crearArbol2(inicio, objetivo, nodos)
 {
 
     nodosParaVisitar = []; // el nodo
     nodosVisitado = []; // solo el nombre
+    stringArbol += inicio + " hijos: "
     nodosVisitado.push(nodos.find(({ nombre }) => nombre == inicio).nombre);
     if(nodosVisitado.length == 1)
     {
-        ArbolFinal.push(new Nodo(inicio, nodos.find(({ nombre }) => nombre == inicio).valorDestino), null)
+        //ArbolFinal.push(new Nodo(inicio, nodos.find(({ nombre }) => nombre == inicio).valorDestino), null)
         nodos.find(({ nombre }) => nombre == nodosVisitado[0]).hijo.forEach(i => {
+            stringArbol += i.nombre + " - ";//hijo
             console.log("🚀 ~ file: nodo.js ~ line 119 ~ nodos.find ~ i", i)
             nodosParaVisitar.push(i);
+            /*
             if(ArbolFinal[0].hijo == null)
             {
                 ArbolFinal[0].hijo = new Array(new Nodo(i.nombre, i.valorDestino, null));
 
             }else{
                 ArbolFinal[0].hijo.push(new Nodo(i.nombre, i.valorDestino, null))
-            }
+            }*/
         });
     }
 
-    
+    stringArbol += ". "
+
     while(nodosParaVisitar.length > 0 || nodosVisitado[nodosVisitado.length-1] != objetivo)
     {
         //primer nodo
@@ -140,15 +145,21 @@ function crearArbol2(inicio, objetivo, nodos)
         {
             console.log("🚀 ~ file: nodo.js ~ line 126 ~ nodoActual", nodoActual)
             console.log("🚀 ~ file: nodo.js ~ line 132 ~ entro", nodoActual['nombre'])
+            if(nodoActual['nombre'] == objetivo)
+            {
+                break;
+            }
+            stringArbol += nodoActual['nombre'] + " hijos: ";
             
             nodosVisitado.push(nodoActual['nombre']);
             nodos.find(({ nombre }) => nombre == nodoActual['nombre']).hijo.forEach(i => {
                 nodosParaVisitar.push(i);
                 console.log("🚀 ~ file: nodo.js ~ line 138 ~ nodos.find ~ i", i)
+                stringArbol += i.nombre + " - ";
+                //ahondar(ArbolFinal[0].hijo[0], nodoActual['nombre'], i)
                 
-                ahondar(ArbolFinal[0].hijo[0], nodoActual['nombre'], i)
-
             });
+            stringArbol += ". "
         }
     }
     
@@ -158,6 +169,10 @@ function crearArbol2(inicio, objetivo, nodos)
 
 function ahondar(nodo, actual, j)
 {
+    if(nodo == null)
+    {
+        return;
+    }
     if(nodo["nombre"].includes(actual))
     {
         console.log(nodo.hijo)
@@ -175,8 +190,11 @@ function ahondar(nodo, actual, j)
         console.log(nodo.hijo)
         if(nodo.hijo == null)
         {
-            ahondar(nodo, nodo.nombre, nodos.find(({ nombre }) => nombre == nodo.nombre))
+            ahondar(nodo, actual, nodos.find(({ nombre }) => nombre == nodo.nombre))
             return;
+        }
+        else{
+            ahondar(nodo.hijo, actual, j);
         }
     }
 
