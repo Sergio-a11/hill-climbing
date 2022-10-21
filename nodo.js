@@ -125,7 +125,7 @@ function busqueda(inicio, destino, arbol) {
             
             if(recorrido[recorrido.length-1] == destino && f==true){
                 console.log("aqui toy");
-                alert("Recorrido, ", recorrido);
+                //alert("Recorrido, ", recorrido);
                 aux=aux2;
                 f=false;
             }
@@ -133,20 +133,32 @@ function busqueda(inicio, destino, arbol) {
             PesoRecorrido = [];
             valor = 0;
             console.log("reco22",recorrido);
-            document.getElementById("conexiones").innerHTML = recorrido.toString();
+            var r = `Resultado: ${recorrido.toString()}`
+            document.getElementById("conexiones").innerHTML = (recorrido[recorrido.length-1] != destino) ? r += " (No hay solución)" : r += " (Solución encontrada)";
+            mostrar(recorrido)
         aux+=2; 
         });
     }
 
-    console.log("rra",recorrido.length);
-            var ll=recorrido.length-1;
-            var f = "X";
-           if(ll.nombre != destino && ll.hijo != destino){
-            ll.nombre= f;
-            recorrido.push(f);
-           }
            
     return recorrido;
+}
+
+function mostrar(recorrido)
+{
+    recorrido.forEach(k => {
+
+        for(i=1; i<=fila; i++)
+        {
+            for(j=1; j<=columna; j++)
+            {
+                if(k == document.getElementById(i+"$"+j).value)
+                {
+                    document.getElementById(i+"$"+j).style.background = "#b0d6ff";
+                }
+            }
+        }
+    });
 }
 
 //pal punto muerto

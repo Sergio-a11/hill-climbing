@@ -1,4 +1,60 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+h1{
+    font-size: 2.5em;
+    text-align: center;
+}
+
 .matriz {
     height: 3em;
     width: 3em;
+    margin-left: 0.5em;
+    margin-top: 0.5em;
+    border-radius: 10px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.btnForm {
+    height: 3em;
+    border-radius: 10px;
+    margin-left: 0.5em;
+    background-color: brown;
+    color: aliceblue;
+}
+
+.matriz:focus, .matriz[focus]
+{
+    background-color: rgb(209, 209, 209);
+
+}
+
+.btnForm:disabled, .btnForm[disabled] {
+    height: 3em;
+    border-radius: 10px;
+    margin-left: 0.5em;
+    background-color: grey;
+    color: rgb(71, 71, 71);
+}
+
+#conexiones {
+    position: relative;
+    font-size: 2em;
+}
+
+label, #fila, #columna {
+    height: 2em;
+    border-radius: 10px;
+    margin-left: 0.5em;
+    font-size: 1em;
+    text-align: center;
+    font-weight: bold;
+}
+
+#matriz 
+{
+    justify-content: center;
+    
 }
