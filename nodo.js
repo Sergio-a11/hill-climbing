@@ -131,7 +131,8 @@ function busqueda(inicio, destino, arbol) {
                 document.getElementById("conexiones").innerHTML = recorrido.toString();
                 return recorrido;
             }
-            if(recorrido[recorrido.length-1] != destino && f==true || aux>= arbol.length){
+
+            /*if(recorrido[recorrido.length-1] != destino && f==true || aux>= arbol.length){
                 var ll=recorrido.length-1;
                 var mal = "X";
                if(ll.nombre != destino && ll.hijo != destino){
@@ -141,7 +142,7 @@ function busqueda(inicio, destino, arbol) {
                 document.getElementById("conexiones").innerHTML = recorrido.toString();
                 return recorrido;
                } 
-            }
+            }*/
             PesoRecorrido = [];
             valor = 0;
             console.log("reco22",recorrido);
