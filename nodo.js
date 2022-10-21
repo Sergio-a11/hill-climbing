@@ -117,8 +117,6 @@ function busqueda(inicio, destino, arbol) {
             }
             console.log("valor previo busqueda", valor);
             console.log("hijos previo a buiscar", nodoDos.hijo);
-            //console.log("hijos previo",nodoDos.hijo.find(({ valorDestino }) => valorDestino == valor).nombre);
-            //recorrido.push(nodoDos.hijo.find(({ valorDestino }) => valorDestino == valor).nombre);
             if(/*valor != 0 &&*/ nodoDos.hijo.nombre!= destino && f==true){
                 var b = nodoDos.hijo.find(({ valorDestino }) => valorDestino == valor).nombre;
                 console.log("valorate que si entro", b);
@@ -131,22 +129,7 @@ function busqueda(inicio, destino, arbol) {
                 aux=aux2;
                 f=false;
             }
-            
-            
-            /*else{
-                
-                
-                var d = destino;
-                recorrido.push(d);
-                alert("Recorrido, ", recorrido);
-                aux= arbol.length;
-                return recorrido;
-            }*/
-            //recorrido.push(.hijo.find(({ valorDestino }) => valorDestino == valor).nombre);
-            /*if(valor == 0)
-            {
-                
-            }*/
+  
             PesoRecorrido = [];
             valor = 0;
             console.log("reco22",recorrido);
@@ -210,6 +193,25 @@ function busqueda(inicio, destino, arbol) {
             PesoRecorrido = [];
             valor = 0;
             console.log("reco22",recorrido);
+                      
+            //reciclke//
+            else{
+                
+                
+                var d = destino;
+                recorrido.push(d);
+                alert("Recorrido, ", recorrido);
+                aux= arbol.length;
+                return recorrido;
+            }*/
+            //recorrido.push(.hijo.find(({ valorDestino }) => valorDestino == valor).nombre);
+            /*if(valor == 0)
+            {
+                
+            }
+            
+            //console.log("hijos previo",nodoDos.hijo.find(({ valorDestino }) => valorDestino == valor).nombre);
+            //recorrido.push(nodoDos.hijo.find(({ valorDestino }) => valorDestino == valor).nombre);
  */
 
 
