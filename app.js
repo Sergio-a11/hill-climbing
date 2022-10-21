@@ -127,6 +127,8 @@ function obtenerNodos()
     }
 }
 
+var uniones = document.getElementById("uniones")
+
 function conectarNodos()
 {
     if(nodoSeleccionado.value == '')
@@ -165,6 +167,8 @@ function conectarNodos()
                             }else{
                                 i.hijo.push(j);
                             }
+
+                            uniones.innerHTML += `<p>${j.nombre} - ${i.nombre}</p>`
                             
                             //posUno es el input tsxt del primer nodo del enlace
                             //nodo sellecionado es el segundo
